@@ -5,6 +5,7 @@ _msg() {
 
 _cur_dir="$(pwd)"
 
+mkdir "${_cur_dir}"/{,qemu-}build
 _msg "Cloning qemu"
 git clone git://git.qemu.org/qemu.git >> "${_cur_dir}"/qemu-build/build.log 2>&1
 cd qemu
@@ -22,6 +23,5 @@ _msg "Installing qemu"
 make install >> "${_cur_dir}"/qemu-build/build.log 2>&1
 _msg "Stripping qemu static binaries"
 find "${_cur_dir}"/qemu-build/bin -type f -exec strip --strip-all {} ';' >> "${_cur_dir}"/qemu-build/build.log 2>&1
-mkdir "${_cur_dir}"/build
 _msg "Copying qemu static binaries to the new build directory"
-cp "${_cur_dir}"/qemu-build/bin/qemu-*-static "${_cur_dir}"/build
+cp "${_cur_dir}"/qemu-build/{build.log,bin/qemu-*-static} "${_cur_dir}"/build
