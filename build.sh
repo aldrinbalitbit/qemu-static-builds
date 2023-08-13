@@ -13,6 +13,7 @@ git submodule update --init --recursive >> "${_cur_dir}"/qemu-build/build.log 2>
 _msg "Configuring qemu"
 ./configure --prefix="${_cur_dir}"/qemu-build \
 	    --static                          \
+	    --enable-gcrypt                   \
 	    --disable-system                  \
 	    --disable-werror >> "${_cur_dir}"/qemu-build/build.log 2>&1
 _msg "Building qemu"
