@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: >-
+          sudo apt-get -qqy update
+
+          sudo apt-get -qqy build-dep qemu
+      - name: Build
+        run: ./build.sh
