@@ -1,4 +1,4 @@
-FROM debian:sid
+FROM kalilinux/kali-dev
 
 ENV DEBIAN_FRONTEND=non-interactive
 RUN apt-get update \
