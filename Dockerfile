@@ -14,6 +14,8 @@ RUN apt-get -qqy update \
     zlib1g-dev \
     python3-pip \
     python3-setuptools \
+    flex \
+    bison \
     meson
 
 RUN git clone --depth=1 https://gitlab.com/qemu-project/qemu.git /qemu/src
