@@ -1,11 +1,20 @@
-FROM debian:sid
+FROM ubuntu
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN echo "deb-src http://ftp.debian.org/debian/ sid main contrib non-free" >> /etc/apt/sources.list \
-  && apt-get -qqy update \
-  && apt-get -qqy install git libgcrypt-dev \
-  && apt-get -qqy build-dep qemu \
-  && apt-get -qqy install usrmerge
+RUN apt-get -qqy update \
+  && apt-get -qqy install \
+    build-essential \
+    ninja-build \
+    git \
+    ca-certificates \
+    libglib2.0-dev \
+    libfdt-dev \
+    libpixman-1-dev \
+    libgcrypt-dev \
+    zlib1g-dev \
+    python3-pip \
+    python3-setuptools \
+    meson
 
 RUN git clone --depth=1 https://gitlab.com/qemu-project/qemu.git /qemu/src
 WORKDIR /qemu/src
