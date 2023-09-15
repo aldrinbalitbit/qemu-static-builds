@@ -1,8 +1,7 @@
 FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN echo "deb http://archive.ubuntu.com/ubuntu/ jammy main multiverse restricted universe" > /etc/apt/sources.list \
-  && echo "deb-src http://archive.ubuntu.com/ubuntu/ jammy main multiverse restricted universe" >> /etc/apt/sources.list \
+RUN echo "deb-src http://archive.ubuntu.com/ubuntu/ jammy main multiverse restricted universe" >> /etc/apt/sources.list \
   && apt-get -qqy update \
   && apt-get -qqy install \
     build-essential \
