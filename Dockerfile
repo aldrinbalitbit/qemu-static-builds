@@ -12,10 +12,9 @@ RUN apt-get update \
     libpixman-1-dev \
     libgcrypt20-dev \
     zlib1g-dev \
-    clang \
-    clang++ \
-    llvm \
-    lld
+    clang-16 \
+    llvm-16 \
+    lld-16
 
 RUN git clone --depth=1 https://github.com/qemu/qemu.git /qemu/src
 WORKDIR /qemu/src
