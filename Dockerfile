@@ -14,7 +14,9 @@ RUN apt-get update \
     zlib1g-dev \
     clang-16 \
     llvm-16 \
-    lld-16
+    lld-16 \
+    python3-pip \
+    python3-setuptools
 
 RUN git clone --depth=1 https://github.com/qemu/qemu.git /qemu/src
 WORKDIR /qemu/src
