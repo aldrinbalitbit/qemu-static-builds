@@ -12,24 +12,10 @@ RUN apt-get update \
     libpixman-1-dev \
     libgcrypt20-dev \
     zlib1g-dev \
-    clang-16 \
-    llvm-16 \
-    lld-16 \
-    python3-pip \
-    python3-setuptools
 
 RUN git clone --depth=1 https://github.com/qemu/qemu.git /qemu/src
 WORKDIR /qemu/src
-RUN CC=clang \
-    CXX=clang++ \
-    AR=llvm-ar \
-    AS=llvm-as \
-    LD=lld \
-    NM=llvm-nm \
-    OBJCOPY=llvm-objcopy \
-    RANLIB=llvm-ranlib \
-    STRIP=llvm-strip \
-    ./configure \
+RUN ./configure \
     --prefix=/qemu/build \
     --static \
     --enable-gcrypt \
