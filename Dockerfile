@@ -21,7 +21,8 @@ RUN apt-get -qqy update \
 
 RUN git clone --depth=1 https://gitlab.com/qemu-project/qemu.git /qemu/src
 WORKDIR /qemu/src
-RUN ./configure \
+RUN git submodule update --init \
+  && ./configure \
     --prefix=/qemu/build \
     --static \
     --enable-gcrypt \
