@@ -11,6 +11,7 @@ RUN apt-get -qqy update \
     libfdt-dev \
     libpixman-1-dev \
     libgcrypt-dev \
+    libnount-dev \
     zlib1g-dev \
     python3-pip \
     python3-setuptools \
@@ -23,7 +24,6 @@ WORKDIR /qemu/src
 RUN ./configure \
     --prefix=/qemu/build \
     --static \
-    --enable-tools \
     --enable-gcrypt \
     --enable-linux-user \
   && make -j16 \
