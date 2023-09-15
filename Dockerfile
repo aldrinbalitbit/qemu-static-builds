@@ -3,7 +3,7 @@ FROM debian:sid
 ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "deb-src http://ftp.debian.org/debian/ sid main contrib non-free" >> /etc/apt/sources.list \
   && apt-get -qqy update \
-  && apt-get -qqy install git \
+  && apt-get -qqy install git libgcrypt-dev \
   && apt-get -qqy build-dep qemu
 
 RUN git clone --depth=1 https://gitlab.com/qemu-project/qemu.git /qemu/src
