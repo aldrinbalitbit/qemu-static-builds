@@ -1,7 +1,9 @@
-FROM ubuntu
+FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get -qqy update \
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ jammy main multiverse restricted universe" > /etc/apt/sources.list \
+  && echo "deb-src http://archive.ubuntu.com/ubuntu/ jammy main multiverse restricted universe" >> /etc/apt/sources.list \
+  && apt-get -qqy update \
   && apt-get -qqy install \
     build-essential \
     ninja-build \
@@ -17,7 +19,8 @@ RUN apt-get -qqy update \
     python3-setuptools \
     flex \
     bison \
-    meson
+    meson \
+  && apt-get -qqy build-dep qemu
 
 RUN git clone --depth=1 https://gitlab.com/qemu-project/qemu.git /qemu/src
 WORKDIR /qemu/src
