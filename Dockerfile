@@ -11,7 +11,7 @@ RUN apt-get update \
     libfdt-dev \
     libpixman-1-dev \
     libgcrypt20-dev \
-    zlib1g-dev \
+    zlib1g-dev
 
 RUN git clone --depth=1 https://github.com/qemu/qemu.git /qemu/src
 WORKDIR /qemu/src
