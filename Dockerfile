@@ -1,6 +1,6 @@
-FROM kalilinux/kali-dev
+FROM debian:sid
 
-ENV DEBIAN_FRONTEND=non-interactive
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
   && apt-get -qqy install --no-install-recommends \
     build-essential \
@@ -10,7 +10,7 @@ RUN apt-get update \
     libglib2.0-dev \
     libfdt-dev \
     libpixman-1-dev \
-    libgcrypt-dev \
+    libgcrypt20-dev \
     zlib1g-dev \
     clang \
     clang++ \
