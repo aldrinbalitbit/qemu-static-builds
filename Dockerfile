@@ -11,6 +11,7 @@ RUN apt-get update \
     libfdt-dev \
     libpixman-1-dev \
     libgcrypt20-dev \
+    libmount-dev \
     zlib1g-dev \
     python3-pip \
     python3-setuptools \
@@ -25,5 +26,5 @@ RUN ./configure \
     --enable-tools \
     --enable-gcrypt \
     --enable-linux-user \
-  && make \
+  && make -j16 \
   && make install
