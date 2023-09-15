@@ -22,6 +22,8 @@ WORKDIR /qemu/src
 RUN ./configure \
     --prefix=/qemu/build \
     --static \
+    --enable-tools \
     --enable-gcrypt \
-  && make -j16 \
+    --enable-linux-user \
+  && make \
   && make install
