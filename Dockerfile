@@ -2,7 +2,7 @@ FROM debian:sid
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
-  && apt-get -y install --no-install-recommends \
+  && apt-get -qqy install --no-install-recommends \
     build-essential \
     ninja-build \
     git \
@@ -24,14 +24,12 @@ RUN CC=clang \
     AS=llvm-as \
     LD=lld \
     NM=llvm-nm \
-    OBJCOPY=llvm-objcopy \ 
+    OBJCOPY=llvm-objcopy \
     RANLIB=llvm-ranlib \
     STRIP=llvm-strip \
     ./configure \
     --prefix=/qemu/build \
     --static \
     --enable-gcrypt \
-    --enable-tools \
-    --enable-linux-user \
   && make -j16 \
   && make install
