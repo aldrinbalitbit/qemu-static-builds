@@ -2,7 +2,7 @@ FROM debian:sid
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
-  && apt-get -qqy install --no-install-recommends \
+  && apt-get -y install --no-install-recommends \
     build-essential \
     ninja-build \
     git \
