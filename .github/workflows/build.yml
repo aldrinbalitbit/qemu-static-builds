@@ -13,11 +13,20 @@ jobs:
       - name: Repository Checkout
         uses: actions/checkout@v3
       - name: Install dependencies
-        run: >-
+        run: |
           sudo sh -c 'echo "deb-src http://archive.ubuntu.com/ubuntu/ jammy main multiverse restricted universe" >> /etc/apt/sources.list'
-
           sudo apt-get -qqy update
-
           sudo apt-get -qqy build-dep qemu
       - name: Build
         run: ./build.sh
+      - name: Commit QEMU static binaries
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add build/*
+          git commit -a -m "Pushed QEMU static binaries: $(date)"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: prebuilt
+          force: true

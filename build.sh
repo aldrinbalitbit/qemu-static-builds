@@ -24,6 +24,7 @@ make install >> "${_cur_dir}"/qemu-build/build.log
 _msg "Stripping qemu static binaries"
 find "${_cur_dir}"/qemu-build/bin -type f -exec strip --strip-all {} ';' >> "${_cur_dir}"/qemu-build/build.log
 _msg "Copying qemu static binaries to the new build directory"
-ls "${_cur_dir}"/qemu-build/*
-ls "${_cur_dir}"/qemu-build/*/*
-cp "${_cur_dir}"/qemu-build/build.log "${_cur_dir}"/build
+for i in "${_cur_dir}"/qemu-build/bin/*
+do
+	cp $i "${_cur_dir}"/build/$i-static
+done
