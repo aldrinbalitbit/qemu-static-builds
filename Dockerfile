@@ -11,7 +11,7 @@ RUN apt-get -qqy update \
     libfdt-dev \
     libpixman-1-dev \
     libgcrypt-dev \
-    libnount-dev \
+    libmount-dev \
     zlib1g-dev \
     python3-pip \
     python3-setuptools \
